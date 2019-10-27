@@ -1,0 +1,24 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>First GenericServlet</display-name>
+
+    <servlet>
+        <servlet-name>firstGenericServlet</servlet-name>
+        <servlet-class>com.lzn.FirstGenericServlet</servlet-class>
+    </servlet>
+
+    <!--  给同一个 Servlet提供（映射）两个可访问的 URI地址-->
+    <servlet-mapping>
+        <servlet-name>firstGenericServlet</servlet-name>
+        <url-pattern>/demo1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>firstGenericServlet</servlet-name>
+        <url-pattern>/demo2</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

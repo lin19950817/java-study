@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>First Servlet</display-name>
+
+    <!--创建一个 Servlet实例-->
+    <servlet>
+        <servlet-name>firstServlet</servlet-name>
+        <servlet-class>com.lzn.FirstServlet</servlet-class>
+        <!--在 tomcat启动时创建 Servlet
+        数字代表优先级，最高是 0，相同则随机-->
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <!--配置第二个 Servlet-->
+    <servlet>
+        <servlet-name>secondServlet</servlet-name>
+        <servlet-class>com.lzn.SecondServlet</servlet-class>
+    </servlet>
+
+    <!--给 Servlet提供（映射）一个可访问的 URI地址-->
+    <servlet-mapping>
+        <servlet-name>firstServlet</servlet-name>
+        <url-pattern>/demo1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>secondServlet</servlet-name>
+        <url-pattern>/demo2</url-pattern>
+    </servlet-mapping>
+
+    <!--默认页面-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>welcome.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

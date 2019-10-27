@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    编写根标签
+    引入实例名称空间 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    引入名称空间 xsi:schemaLocation="http://www.lzn.cn/xml"
+    引入默认的名称空间
+-->
+<students xmlns="http://www.lzn.cn/xml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.lzn.cn/xml student.xsd"
+>
+
+    <student number="hehe_101">
+        <name>hehe</name>
+        <age>18</age>
+        <sex>male</sex>
+    </student>
+
+</students>
+
+<!--
+    
+<t1:students
+          xmlns:t1="http://www.lzn.cn/xml"
+          xmlns:t2="http://www.lzn.cn/xml"
+          xsi:schemaLocation="http://www.lzn.cn/xml student.xsd"
+          xsi:schemaLocation="http://www.lzn.cn/xml student.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+
+<t1:student number="hehe_101">
+    <name>hehe</name>
+    <age>18</age>
+    <sex>male</sex>
+</t1:student>
+<t2:student>
+
+</t2:student>
+
+</t1:students>-->
