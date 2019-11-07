@@ -21,8 +21,8 @@ public class FirstServletContext extends HttpServlet {
         // 向 ServletContext添加一个键值对
         context.setAttribute("name", "hehe");
 
-        // 获取全局配置信息
-        String encoding = context.getInitParameter("encoding");
+        // 获取 servlet全局配置信息
+        String encoding = getServletConfig().getInitParameter("encoding");
         System.out.println(encoding);
 
         System.out.println("FirstServletContext.doGet()");
