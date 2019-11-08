@@ -34,3 +34,12 @@
 ## FiveHttpServletResponse(刷新功能)
 * 设置响应头进行刷新 `resp.setHeader("refresh", "1");` 
 * 设置响应头进行跳转 `resp.setHeader("refresh", "3;url=/response/demo1");`
+## SixHttpServletResponse(重定向)
+* `resp.setHeader("location", "/response/demo1");`<br>
+    等于：<br>
+    ```
+    // 告诉客户端要重定向资源
+    resp.setStatus(302);
+    // 告诉浏览器访问哪个 URL
+    resp.setHeader("location", "/response/demo1");
+    ```

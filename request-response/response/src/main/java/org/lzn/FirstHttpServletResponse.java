@@ -30,5 +30,7 @@ public class FirstHttpServletResponse extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         // 向客户端响应文本
         writer.write("你好");
+
+        System.out.println("FirstHttpServletResponse");
     }
 }
