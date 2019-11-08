@@ -47,6 +47,15 @@ public class FourHttpServletResponse extends HttpServlet {
             position += 20;
         }
 
+        // 添加 9 条干扰线
+        for (int i = 0; i < 9; i++) {
+            graphics.drawLine(rand.nextInt(width), rand.nextInt(height), rand.nextInt(width), rand.nextInt(height));
+        }
+
+        // 高速客户端不使用缓存
+        resp.setHeader("pragma", "no-cache");
+        resp.setHeader("cache-control", "no-cache");
+        resp.setIntHeader("expires", 0);
 
         // 将图片对象以流的形式
         ImageIO.write(image, "jpg", resp.getOutputStream());

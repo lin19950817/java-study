@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+  fourHttpServletResponse使用验证码
+  @author LinZhenNan lin.zhennan@hand-china.com 2019/11/08 11:43 
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function changeImg() {
+            var img = document.getElementById("img");
+
+            // XML DOM语法
+            // img.setAttribute("src", "/response/demo4");
+            // 解决缓存
+            img.src = "/response/demo4?time=" + new Date().getTime();
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="post">
+        用户名：<input type="text" name="userName"/><br>
+        密码：<input type="password" name="pwd"/><br>
+        验证码：<input type="text" name="code"/><img id="img" src="/response/demo4"/><a href="javascript:changeImg()">看不清换一张</a><br>
+        <input type="submit" name="userName"><br>
+    </form>
+</body>
+</html>

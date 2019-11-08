@@ -20,6 +20,10 @@
         <servlet-name>fourHttpServletResponse</servlet-name>
         <servlet-class>org.lzn.FourHttpServletResponse</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>fiveHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.FiveHttpServletResponse</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>firstHttpServletResponse</servlet-name>
@@ -36,5 +40,9 @@
     <servlet-mapping>
         <servlet-name>fourHttpServletResponse</servlet-name>
         <url-pattern>/demo4</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fiveHttpServletResponse</servlet-name>
+        <url-pattern>/demo5</url-pattern>
     </servlet-mapping>
 </web-app>
