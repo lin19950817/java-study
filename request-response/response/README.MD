@@ -9,3 +9,14 @@
     // 告诉客户端要使用什么编码
     resp.setHeader("content-type", "text/html;charset=UTF-8");
     ```
+## SecondHttpServletResponse
+* 输出流
+## ThirdHttpSerlvetResponse(文件下载)
+* 显示与下载图片的差异，下载需要加上：
+    ```
+    // 告知客户端要下载文件
+    resp.setHeader("content-disposition", "attachment;filename=" + filename);
+    ```
+## FourHttpServletResponse(验证码)
+* 生成 4 个随机数的验证码<br/>
+![验证码](../images/response/four.png)

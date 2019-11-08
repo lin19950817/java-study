@@ -19,8 +19,10 @@ public class FirstHttpServletResponse extends HttpServlet {
         System.out.println(resp.getCharacterEncoding());
         // 告诉服务器应用使用 UTF-8 解析文本
 //        resp.setCharacterEncoding("UTF-8");
+//        resp.setCharacterEncoding("GBK");
         // 告诉客户端要使用什么编码
 //        resp.setHeader("content-type", "text/html;charset=UTF-8");
+//        resp.setHeader("content-type", "text/html;charset=GBK");
 
         // 告诉服务器应用使用 UTF-8 解析文本，告诉客户端要使用什么编码
         resp.setContentType("text/html;charset=UTF-8");
@@ -28,10 +30,5 @@ public class FirstHttpServletResponse extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         // 向客户端响应文本
         writer.write("你好");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
     }
 }

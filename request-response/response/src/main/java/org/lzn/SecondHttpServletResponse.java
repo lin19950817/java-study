@@ -16,13 +16,12 @@ import java.io.OutputStream;
 public class SecondHttpServletResponse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
+
         // 输出流
         ServletOutputStream outputStream = resp.getOutputStream();
         outputStream.write("你好".getBytes("UTF-8"));
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        outputStream.write("<br/>".getBytes());
+        outputStream.write("你好".getBytes("GBK"));
     }
 }

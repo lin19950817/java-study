@@ -8,9 +8,33 @@
         <servlet-name>firstHttpServletResponse</servlet-name>
         <servlet-class>org.lzn.FirstHttpServletResponse</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>secondHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.SecondHttpServletResponse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>thirdHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.ThirdHttpServletResponse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>fourHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.FourHttpServletResponse</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>firstHttpServletResponse</servlet-name>
         <url-pattern>/demo1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>secondHttpServletResponse</servlet-name>
+        <url-pattern>/demo2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>thirdHttpServletResponse</servlet-name>
+        <url-pattern>/demo3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fourHttpServletResponse</servlet-name>
+        <url-pattern>/demo4</url-pattern>
     </servlet-mapping>
 </web-app>
