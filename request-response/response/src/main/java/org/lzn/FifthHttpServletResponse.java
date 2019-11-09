@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author LinZhenNan lin.zhennan@hand-china.com 2019/11/08 16:19
  */
-public class FiveHttpServletResponse extends HttpServlet {
+public class FifthHttpServletResponse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 一秒刷新一次

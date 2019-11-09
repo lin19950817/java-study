@@ -11,10 +11,10 @@ import java.io.IOException;
  *
  * @author LinZhenNan lin.zhennan@hand-china.com 2019/11/08 17:22
  */
-public class SixHttpServletResponse extends HttpServlet {
+public class SixthHttpServletResponse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("SixHttpServletResponse start");
+        System.out.println("SixthHttpServletResponse start");
 
         // 告诉客户端要重定向资源
 //        resp.setStatus(302);
@@ -23,6 +23,6 @@ public class SixHttpServletResponse extends HttpServlet {
 
         resp.sendRedirect("/response/demo1");
 
-        System.out.println("SixHttpServletResponse end");
+        System.out.println("SixthHttpServletResponse end");
     }
 }

@@ -17,16 +17,16 @@
         <servlet-class>org.lzn.ThirdHttpServletResponse</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>fourHttpServletResponse</servlet-name>
-        <servlet-class>org.lzn.FourHttpServletResponse</servlet-class>
+        <servlet-name>fourthHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.FourthHttpServletResponse</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>fiveHttpServletResponse</servlet-name>
-        <servlet-class>org.lzn.FiveHttpServletResponse</servlet-class>
+        <servlet-name>fifthHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.FifthHttpServletResponse</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>sixHttpServletResponse</servlet-name>
-        <servlet-class>org.lzn.SixHttpServletResponse</servlet-class>
+        <servlet-name>sixthHttpServletResponse</servlet-name>
+        <servlet-class>org.lzn.SixthHttpServletResponse</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -42,15 +42,15 @@
         <url-pattern>/demo3</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>fourHttpServletResponse</servlet-name>
+        <servlet-name>fourthHttpServletResponse</servlet-name>
         <url-pattern>/demo4</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>fiveHttpServletResponse</servlet-name>
+        <servlet-name>fifthHttpServletResponse</servlet-name>
         <url-pattern>/demo5</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>sixHttpServletResponse</servlet-name>
+        <servlet-name>sixthHttpServletResponse</servlet-name>
         <url-pattern>/demo6</url-pattern>
     </servlet-mapping>
 </web-app>

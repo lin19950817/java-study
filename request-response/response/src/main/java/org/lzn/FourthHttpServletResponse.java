@@ -15,7 +15,7 @@ import java.util.Random;
  *
  * @author LinZhenNan lin.zhennan@hand-china.com 2019/11/07 17:32
  */
-public class FourHttpServletResponse extends HttpServlet {
+public class FourthHttpServletResponse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int width = 110;
