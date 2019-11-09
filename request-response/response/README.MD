@@ -11,7 +11,7 @@
     ```
 ## SecondHttpServletResponse
 * 输出流
-## ThirdHttpSerlvetResponse(文件下载)
+## [ThirdHttpSerlvetResponse(文件下载)](/src/main/java/org/lzn/ThirdHttpSerlvetResponse.java)
 * 显示与下载图片的差异，下载需要加上：
     ```
     // 告知客户端要下载文件
