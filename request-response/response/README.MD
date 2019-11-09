@@ -17,7 +17,7 @@
     // 告知客户端要下载文件
     resp.setHeader("content-disposition", "attachment;filename=" + filename);
     ```
-## [FourHttpServletResponse(验证码)](/request-response/response/src/main/java/org/lzn/FourHttpServletResponse.java)
+## [FourthHttpServletResponse(验证码)](/request-response/response/src/main/java/org/lzn/FourthHttpServletResponse.java)
 * 生成 4 个随机数的验证码<br/>
 ![验证码](../images/response/four.png)
 * login.html模拟使用验证码
@@ -31,10 +31,10 @@
   resp.setHeader("cache-control", "no-cache");
   resp.setIntHeader("expires", 0);
   ```
-## [FiveHttpServletResponse(刷新功能)](/request-response/response/src/main/java/org/lzn/FiveHttpServletResponse.java)
+## [FifthHttpServletResponse(刷新功能)](/request-response/response/src/main/java/org/lzn/FifthHttpServletResponse.java)
 * 设置响应头进行刷新 `resp.setHeader("refresh", "1");` 
 * 设置响应头进行跳转 `resp.setHeader("refresh", "3;url=/response/demo1");`
-## [SixHttpServletResponse(重定向)](/request-response/response/src/main/java/org/lzn/SixHttpServletResponse.java)
+## [SixthHttpServletResponse(重定向)](/request-response/response/src/main/java/org/lzn/SixthHttpServletResponse.java)
 * `resp.setHeader("location", "/response/demo1");`<br>
     等于：<br>
     ```
