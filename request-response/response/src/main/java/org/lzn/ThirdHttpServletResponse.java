@@ -20,7 +20,7 @@ public class ThirdHttpServletResponse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 通过路径得到一个输入流
-        String path = getServletContext().getRealPath("/WEB-INF/imags/收到.jfif");
+        String path = getServletContext().getRealPath("/WEB-INF/images/收到.jfif");
         FileInputStream fileInputStream = new FileInputStream(path);
 
         // 创建字节输出流
@@ -31,7 +31,7 @@ public class ThirdHttpServletResponse extends HttpServlet {
         // 设置文件名的编码（中文等不安全的字符转化 UTF-8）
         filename = URLEncoder.encode(filename, "UTF-8");
         // 告知客户端要下载文件
-//        resp.setHeader("content-disposition", "attachment;filename=" + filename);
+        resp.setHeader("content-disposition", "attachment;filename=" + filename);
         resp.setContentType("image/png");
 
         // 执行输出操作
