@@ -1,6 +1,6 @@
 # resonse
 `HttpServletResponse` 中没有 `setCharacterEncoding()` ，原因是 `servlet-api.jar` 在 **2.3版本** 中没有这个方法。 **2.4版本** 才有
-## FirstHttpServletResponse
+## [FirstHttpServletResponse](/request-response/response/src/main/java/org/lzn/FirstHttpServletResponse.java)
 * `resp.setContentType("UTF-8");` <br/>
     等于:
     ```
@@ -9,15 +9,15 @@
     // 告诉客户端要使用什么编码
     resp.setHeader("content-type", "text/html;charset=UTF-8");
     ```
-## SecondHttpServletResponse
+## [SecondHttpServletResponse](/request-response/response/src/main/java/org/lzn/SecondHttpServletResponse.java)
 * 输出流
-## [ThirdHttpSerlvetResponse(文件下载)](/src/main/java/org/lzn/ThirdHttpSerlvetResponse.java)
+## [ThirdHttpSerlvetResponse(文件下载)](/request-response/response/src/main/java/org/lzn/ThirdHttpServletResponse.java)
 * 显示与下载图片的差异，下载需要加上：
     ```
     // 告知客户端要下载文件
     resp.setHeader("content-disposition", "attachment;filename=" + filename);
     ```
-## FourHttpServletResponse(验证码)
+## [FourHttpServletResponse(验证码)](/request-response/response/src/main/java/org/lzn/FourHttpServletResponse.java)
 * 生成 4 个随机数的验证码<br/>
 ![验证码](../images/response/four.png)
 * login.html模拟使用验证码
@@ -31,10 +31,10 @@
   resp.setHeader("cache-control", "no-cache");
   resp.setIntHeader("expires", 0);
   ```
-## FiveHttpServletResponse(刷新功能)
+## [FiveHttpServletResponse(刷新功能)](/request-response/response/src/main/java/org/lzn/FiveHttpServletResponse.java)
 * 设置响应头进行刷新 `resp.setHeader("refresh", "1");` 
 * 设置响应头进行跳转 `resp.setHeader("refresh", "3;url=/response/demo1");`
-## SixHttpServletResponse(重定向)
+## [SixHttpServletResponse(重定向)](/request-response/response/src/main/java/org/lzn/SixHttpServletResponse.java)
 * `resp.setHeader("location", "/response/demo1");`<br>
     等于：<br>
     ```
