@@ -24,5 +24,9 @@ public class FourthServletContext extends HttpServlet {
 
         // 给 requset设置键值对
         req.setAttribute("key", "hehe");
+
+        resp.getWriter().write("FourthServletContext.doPost()");
+
+        System.out.println("FourthServletContext end");
     }
 }

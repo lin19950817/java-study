@@ -34,10 +34,15 @@ public class ThirdServletContext extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("ThirdServletContext.doPost()");
 
+        resp.getWriter().write("ThirdServletContext.doPost() start");
+
         // 转发到 demo4(FourthServletContext)
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/demo4");
         requestDispatcher.forward(req, resp);
+
+        resp.getWriter().write("ThirdServletContext.doPost() end");
+
 
         // 取出 demo4设置的键值对
         System.out.println(req.getAttribute("key"));
