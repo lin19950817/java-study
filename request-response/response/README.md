@@ -21,9 +21,9 @@
 * 生成 4 个随机数的验证码<br/>
 ![验证码](../images/response/four.png)
 * **[login.html](/request-response/response/src/main/webapp/login.html)** 模拟使用验证码
-  * 前端不使用缓存：使用可变的参数让请求不同。<br>
+  * 前端不使用缓存：使用可变的参数让请求不同。<br/>
   `img.src = "/response/demo4?time=" + new Date().getTime();` 
-  * 后端不使用缓存<br>
+  * 后端不使用缓存<br/>
   ```
   resp.setHeader("pragma", "no-cache");
   resp.setHeader("cache-control", "no-cache");
@@ -33,8 +33,8 @@
 * 设置响应头进行刷新 `resp.setHeader("refresh", "1");` 
 * 设置响应头进行跳转 `resp.setHeader("refresh", "3;url=/response/demo1");`
 ## [SixthHttpServletResponse(重定向)](/request-response/response/src/main/java/org/lzn/SixthHttpServletResponse.java)
-* `resp.setHeader("location", "/response/demo1");`<br>
-    等于：<br>
+* `resp.setHeader("location", "/response/demo1");`<br/>
+    等于：<br/>
     ```
     // 告诉客户端要重定向资源
     resp.setStatus(302);
