@@ -9,8 +9,6 @@
 1. 浏览器类型信息
 2. 所有消息头信息
 ## [ThirdHttpServletRequest(获取表单数据)](request-response/request/src/main/java/org/lzn/ThirdHttpServletRequest.java)
-**[register](request-response/request/webapp/register.html)** 提交表单数据<br/>
-
 |接口名称|说明|
 |:-|:-|
 |showDesignativeFormData|获取指定的表单数据|
@@ -19,6 +17,7 @@
 |showFormDataForFrame|使用框架封装表单数据(反射)|
 |showFormDataByInputStream|使用 `getInputStream()` 获得表单数据|
 
+**[register](request-response/request/webapp/register.html)** 提交表单数据<br/>
 解决 `post`方式编码问题：`req.setCharacterEncoding("UTF-8");`<br/>
 前端编码:<br/>
 ![charset](../images/request/frontCharset.png)
