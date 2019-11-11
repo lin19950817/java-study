@@ -16,7 +16,8 @@
 |showAllFormData|获取所有的表单数据|
 |showFormDataOfEncapsulation|获取表单数据并封装(反射)|
 |showFormDataForFrame|使用框架封装表单数据(反射)|
-|showFormDataByInputStream|使用 `getInputStream()` 获得表单数据|<br/>
+|showFormDataByInputStream|使用 `getInputStream()` 获得表单数据|
+
 解决 `post`方式编码问题：`req.setCharacterEncoding("UTF-8");`<br/>
 前端编码:<br/>
 ![charset](../images/request/frontCharset.png)
