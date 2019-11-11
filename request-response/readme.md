@@ -5,4 +5,4 @@
 ---
 # 问题
 1. maven如何转web项目?<br/>
-> 进入链接：`https://github.com/lin19950817/record/tree/master/idea/maven%E5%B7%A5%E7%A8%8B%E8%BD%ACweb%E9%A1%B9%E7%9B%AE`
+> ☛ [maven转web项目](https://github.com/lin19950817/record/tree/master/idea/maven%E5%B7%A5%E7%A8%8B%E8%BD%ACweb%E9%A1%B9%E7%9B%AE)
