@@ -17,7 +17,7 @@
 |showFormDataForFrame|使用框架封装表单数据(反射)|
 |showFormDataByInputStream|使用 `getInputStream()` 获得表单数据|
 
-**[register](request-response/request/webapp/register.html)** 提交表单数据<br/>
-解决 `post`方式编码问题：`req.setCharacterEncoding("UTF-8");`<br/>
+1. **[register](request-response/request/webapp/register.html)** 提交表单数据<br/>
+2. 解决 `post`方式编码问题：`req.setCharacterEncoding("UTF-8");`<br/>
 前端编码:<br/>
 ![charset](../images/request/frontCharset.png)
