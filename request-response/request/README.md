@@ -13,7 +13,16 @@
 解决 `post`方式编码问题：`req.setCharacterEncoding("UTF-8");`<br/>
 前端编码:<br/>
 ![charset](../images/request/frontCharset.png)
-1. 获取指定的表单数据
-2. 获取所有的表单数据
-3. 获取表单数据并封装(反射)
-4. 使用框架封装表单数据(反射)
+1. 获取指定的表单数据: `showDesignativeFormData(HttpServletRequest)`
+2. 获取所有的表单数据: `showAllFormData(HttpServletRequest)`
+3. 获取表单数据并封装(反射): `showFormDataOfEncapsulation(HttpServletRequest)`
+4. 使用框架封装表单数据(反射): `showFormDataForFrame(HttpServletRequest)`
+5. 使用 `getInputStream()` 获得表单数据: `showFormDataByInputStream(HttpServletRequest)`
+
+|接口名称|说明|
+|:-|:-|
+|showDesignativeFormData|获取指定的表单数据|
+|showAllFormData|获取所有的表单数据|
+|showFormDataOfEncapsulation|获取表单数据并封装(反射)|
+|showFormDataForFrame|使用框架封装表单数据(反射)|
+|showFormDataByInputStream|使用 `getInputStream()` 获得表单数据|

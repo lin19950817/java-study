@@ -4,6 +4,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.lzn.entity.Register;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -37,11 +39,13 @@ public class ThirdHttpServletRequest extends HttpServlet {
 //            showFormDataOfEncapsulation(req);
 
             // 使用框架封装表单数据
-            showFormDataForFrame(req);
+//            showFormDataForFrame(req);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // 通过 inputStream获取表单数据
+        showFormDataByInputStream(req);
     }
 
 
@@ -72,7 +76,27 @@ public class ThirdHttpServletRequest extends HttpServlet {
         }
 
     }
-    
+
+    /**
+     * 使用 getInputSream获取表单数据
+     *
+     * @param req 请求
+     * @author LinZhenNan lin.zhennan@hand-china.com 2019-11-11 14:49
+     */
+    private void showFormDataByInputStream(HttpServletRequest req) throws IOException {
+        req.setCharacterEncoding("UTF-8");
+        // 获取表单数据
+        ServletInputStream inputStream = req.getInputStream();
+        int len;
+        byte[] b = new byte[1024];
+        while ((len = inputStream.read(b)) != -1) {
+            String body = new String(b, 0, len);
+            System.out.println(body);
+            System.out.println(URLDecoder.decode(body, "UTF-8"));
+        }
+        inputStream.close();
+    }
+
     /**
      * 使用框架封装表单数据
      *
