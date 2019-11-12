@@ -1,4 +1,4 @@
-# 内省 [myIntrospector](src/main/java/org/lzn/myIntrospector.java)
+# 内省 [myIntrospector](src/main/java/org/lzn/MyIntrospector.java)
 ## demo1
 1. Introspector构建一个 BeanInfo对象
 2. BeanInfo将以各类的所有属性进行了封装
