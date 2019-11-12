@@ -20,6 +20,8 @@ public class SecondHttpServletRequest extends HttpServlet {
 
         // 获得所有请求消息头
         showHeader(req);
+
+        resp.getWriter().write("SecondHttpServletRequest");
     }
 
     /**

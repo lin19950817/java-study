@@ -21,7 +21,9 @@ public class SixthHttpServletResponse extends HttpServlet {
         // 告诉浏览器访问哪个 URL
 //        resp.setHeader("location", "/response/demo1");
 
-        resp.sendRedirect("/response/demo1");
+//        resp.sendRedirect(req.getContextPath() + "/demo1");
+        // 可以跳转到其他应用
+        resp.sendRedirect("https://www.baidu.com");
 
         System.out.println("SixthHttpServletResponse end");
     }

@@ -16,6 +16,18 @@
         <servlet-name>thirdHttpServletRequest</servlet-name>
         <servlet-class>org.lzn.ThirdHttpServletRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>fourthHttpServletRequest</servlet-name>
+        <servlet-class>org.lzn.FourthHttpServletRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>fifthHttpServletRequest</servlet-name>
+        <servlet-class>org.lzn.FifthHttpServletRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sixthHttpServletRequest</servlet-name>
+        <servlet-class>org.lzn.SixthHttpServletRequest</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>firstHttpServletRequest</servlet-name>
@@ -28,5 +40,17 @@
     <servlet-mapping>
         <servlet-name>thirdHttpServletRequest</servlet-name>
         <url-pattern>/demo3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fourthHttpServletRequest</servlet-name>
+        <url-pattern>/demo4</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fifthHttpServletRequest</servlet-name>
+        <url-pattern>/demo5</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sixthHttpServletRequest</servlet-name>
+        <url-pattern>/demo6</url-pattern>
     </servlet-mapping>
 </web-app>

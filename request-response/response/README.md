@@ -41,3 +41,5 @@
     // 告诉浏览器访问哪个 URL
     resp.setHeader("location", "/response/demo1");
     ```
+* 图解<br/>
+    ![重定向](../images/response/redirect.png)
