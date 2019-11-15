@@ -26,7 +26,7 @@
 2. 通过 `request.setAttribute()` 在域中添加非表单数据
 3. 图解<br/>
 ![转发](../images/request/forward.png)
-## [FifthHttpServletRequest](src/main/java/org/lzn/FifthHttpServletRequest.java)
+## [FifthHttpServletRequest(请求接受者)](src/main/java/org/lzn/FifthHttpServletRequest.java)
 请求接收者
-## [SixthHttpServletRequest](src/main/java/org/lzn/SixthHttpServletRequest.java)
+## [SixthHttpServletRequest(请求包含)](src/main/java/org/lzn/SixthHttpServletRequest.java)
 1. 请求包含
