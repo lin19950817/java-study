@@ -32,7 +32,7 @@ public class ThirdHttpServletRequest extends HttpServlet {
 //        showDesignativeFormData(req);
 
         // 显示所有表单数据
-//        showAllFormData(req);
+        showAllFormData(req);
 
         try {
             // 获得表单数据并封装
@@ -75,26 +75,6 @@ public class ThirdHttpServletRequest extends HttpServlet {
             }
         }
 
-    }
-
-    /**
-     * 使用 getInputSream获取表单数据
-     *
-     * @param req 请求
-     * @author LinZhenNan lin.zhennan@hand-china.com 2019-11-11 14:49
-     */
-    private void showFormDataByInputStream(HttpServletRequest req) throws IOException {
-        req.setCharacterEncoding("UTF-8");
-        // 获取表单数据
-        ServletInputStream inputStream = req.getInputStream();
-        int len;
-        byte[] b = new byte[1024];
-        while ((len = inputStream.read(b)) != -1) {
-            String body = new String(b, 0, len);
-            System.out.println(body);
-            System.out.println(URLDecoder.decode(body, "UTF-8"));
-        }
-        inputStream.close();
     }
 
     /**
@@ -168,5 +148,25 @@ public class ThirdHttpServletRequest extends HttpServlet {
             System.out.println("\t" + hobbys[i]);
         }
         System.out.println("city : " + city);
+    }
+
+    /**
+     * 使用 getInputSream获取表单数据
+     *
+     * @param req 请求
+     * @author LinZhenNan lin.zhennan@hand-china.com 2019-11-11 14:49
+     */
+    private void showFormDataByInputStream(HttpServletRequest req) throws IOException {
+        req.setCharacterEncoding("UTF-8");
+        // 获取表单数据
+        ServletInputStream inputStream = req.getInputStream();
+        int len;
+        byte[] b = new byte[1024];
+        while ((len = inputStream.read(b)) != -1) {
+            String body = new String(b, 0, len);
+            System.out.println(body);
+            System.out.println(URLDecoder.decode(body, "UTF-8"));
+        }
+        inputStream.close();
     }
 }
