@@ -12,4 +12,11 @@
     <artifactId>session</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.lzn</groupId>
+            <artifactId>cookie</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
