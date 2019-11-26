@@ -12,6 +12,26 @@
         <servlet-name>secondCookie</servlet-name>
         <servlet-class>org.lzn.SecondCookie</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>clearCookie</servlet-name>
+        <servlet-class>org.lzn.ClearCookie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>org.lzn.login.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>doLoginServlet</servlet-name>
+        <servlet-class>org.lzn.login.DoLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showAllBooksServlet</servlet-name>
+        <servlet-class>org.lzn.history.ShowAllBooksServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showBookDetail</servlet-name>
+        <servlet-class>org.lzn.history.ShowBookDetail</servlet-class>
+    </servlet>
 
     <!--firstCookie 请求路径-->
     <servlet-mapping>
@@ -30,5 +50,26 @@
     <servlet-mapping>
         <servlet-name>secondCookie</servlet-name>
         <url-pattern>/path/demo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>clearCookie</servlet-name>
+        <url-pattern>/path/clear</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>doLoginServlet</servlet-name>
+        <url-pattern>/doLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showAllBooksServlet</servlet-name>
+        <url-pattern>/showAllBooks</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showBookDetail</servlet-name>
+        <url-pattern>/showBookDetail</url-pattern>
     </servlet-mapping>
 </web-app>

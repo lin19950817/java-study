@@ -31,7 +31,26 @@ Path：/cookie/path/<br>
 2. 访问 `demo2` servlet，看页面是否显示最后访问时间
 3. 访问 `path/demo2` servlet，看页面是否显示最后访问时间
 4. 访问 `demo2` servlet，看页面是否显示最后访问时间
-    1. 第一个访问时间是访问 `path/demo1` 时保存的 cookie, path 为 `/cookie/path`
-    2. 第二个访问时间是访问 `path/demo2` 时保存的 cookie, path 为 `/cookie`
-
-
+    1. 第一个 cookie `path/demo1` 时保存的 cookie, path 为 `/cookie/path`
+    2. 第二个 cookie `path/demo2` 时保存的 cookie, path 为 `/cookie`
+## [clearCookie](src/main/java/org/lzn/ClearCookie.java)
+清除 `/cookie` 路径下的 cookie
+1. 访问 `demo2` servlet，看页面查看 cookie
+2. 新建页面访问 `path/demo1` servlet，看页面查看 cookie
+3. 点击页面 `demo2` 的 `clear`， 会删除 `/cookie` 路劲下的 cookie
+4. 点击页面 `path/demo1` 查看 cookie，看 `/cookie` 路劲下的 cookie 是否已经删除
+## [loginServlet](src/main/java/org/lzn/login/LoginServlet.java)
+登录页面，如果有 cookie，则将 cookie 的值填进表单对应的值中<br>
+![登录](images/login.png)
+## [doLoginServlet](src/main/java/org/lzn/login/DoLoginServlet.java)
+登录功能，记住用户名且登录成功则保存 cookie
+## [showAllBooksServlet](src/main/java/org/lzn/history/ShowAllBooksServlet.java)
+使用 cookie 实现历史记录。cookie 格式："id"-"id",例如：1-2<br>
+点击图书会打开图书详情的页面，主页刷新会显示最近阅读的三本书<br>
+### 架构
+| 类名 | 说明 | package |
+| :- | :- | :- |
+| Book | 实体类 | entity |
+| DBUtil | 工具类，模拟从数据库获取数据 | util |
+| ShowAllBooksServlet | Servlet，主页 | history |
+| ShowBookDetail | Servlet，图书详情 | history |

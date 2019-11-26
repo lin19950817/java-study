@@ -31,6 +31,7 @@ public class SecondCookie extends HttpServlet {
                 }
             }
         }
+        writer.print("<a href='" + req.getContextPath() + "/path/clear'>clear</a>");
         // 创建一个 cookie，key：lastAccessTime，value：当前时间戳
         Cookie cookie = new Cookie("lastAccessTime", String.valueOf(System.currentTimeMillis()));
         // 生存时间为 5 分钟
