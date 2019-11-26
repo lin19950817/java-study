@@ -17,7 +17,8 @@ public class SixthHttpServletResponse extends HttpServlet {
         System.out.println("SixthHttpServletResponse start");
 
         // 告诉客户端要重定向资源
-//        resp.setStatus(302);
+        // resp.setStatus(301);
+        resp.setStatus(302);
         // 告诉浏览器访问哪个 URL
 //        resp.setHeader("location", "/response/demo1");
 
