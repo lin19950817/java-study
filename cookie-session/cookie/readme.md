@@ -50,7 +50,7 @@ Path：/cookie/path/<br>
 ### 架构
 | 类名 | 说明 | package |
 | :- | :- | :- |
-| Book | 实体类 | entity |
-| DBUtil | 工具类，模拟从数据库获取数据 | util |
-| ShowAllBooksServlet | Servlet，主页 | history |
-| ShowBookDetail | Servlet，图书详情 | history |
+| [Book](src/main/java/org/lzn/entity/Book.java) | 实体类 | entity |
+| [DBUtil](src/main/java/org/lzn/util/DBUtil.java) | 工具类，模拟从数据库获取数据 | util |
+| [ShowAllBooksServlet](src/main/java/org/lzn/history/ShowAllBooksServlet.java) | Servlet，主页 | history |
+| [ShowBookDetail](src/main/java/org/lzn/history/ShowBookDetail.java) | Servlet，图书详情 | history |
