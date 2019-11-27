@@ -28,5 +28,11 @@ public class ShowAllBooksServlet extends HttpServlet {
             writer.write("<a href='" + req.getContextPath() + "/addCart?id=" + book.getKey() + "'>" + book.getValue().getName() + "</a><br>");
         }
         writer.write("<hr><a href='" + req.getContextPath() + "/showCart'>查看购物车</a>");
+
+
+        System.out.println(req.getSession().getMaxInactiveInterval());
+        // 10 秒后销毁
+        req.getSession().setMaxInactiveInterval(10);
+        System.out.println(req.getSession().getMaxInactiveInterval());
     }
 }

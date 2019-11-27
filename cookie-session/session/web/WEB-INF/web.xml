@@ -45,4 +45,9 @@
         <url-pattern>/showCart</url-pattern>
     </servlet-mapping>
 
+    <session-config>
+        <!--代表 session 在 10 分钟后销毁-->
+        <session-timeout>10</session-timeout>
+    </session-config>
+
 </web-app>
