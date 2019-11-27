@@ -5,6 +5,14 @@ session 的实现原理<br>
 ![session](images/session.png)<br>
 cookie 中的 jsessionid<br>
 ![jsessionid](images/jsessionid.png)
+### getSession: 内部执行原理
+1. 获取名称为 jsessionid 的 cookie 的值
+2. 没有这样的 cookie，创建一个新的 HttpSession 对象，分配一个唯一的 sessionID，并且向客户端卸了一个名为 jsessionid=sessionId 的 cookie
+3. 有这样的 cookie，获取 cookie 的值（HttpSession 对象的值），从服务器的内存中根据 id 找到那个 HttpSession 对象
+### getSession(boolan create)
+参数：
+* true: 和 getSession() 功能一样
+* false: 根据客户端 jsessionid 的 cookie 的值，找对应的 HttpSession 对象，找不到返回 null（只是查询）。
 ## [firstSession](src/main/java/org/lzn/FirstSession.java)
 存放 session
 ## [secondSession](src/main/java/org/lzn/SecondSession.java)
