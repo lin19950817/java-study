@@ -25,8 +25,8 @@ public class ShowAllBooksServlet extends HttpServlet {
         writer.write("本网站有以下好书：<br>");
         Map<String, Book> books = DBUtil.getBooks();
         for (Map.Entry<String, Book> book : books.entrySet()) {
-            writer.write("<a href='" + req.getContextPath() + "/addCart?id=" + book.getKey() + "'>" + book.getValue() + "</a><br>");
+            writer.write("<a href='" + req.getContextPath() + "/addCart?id=" + book.getKey() + "'>" + book.getValue().getName() + "</a><br>");
         }
-        writer.write("<hc><a href='" + req.getContextPath() + "/showCart'>查看购物车</a>");
+        writer.write("<hr><a href='" + req.getContextPath() + "/showCart'>查看购物车</a>");
     }
 }

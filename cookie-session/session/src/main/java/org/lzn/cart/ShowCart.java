@@ -19,7 +19,7 @@ import org.lzn.entity.Book;
 public class ShowCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;char=UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
         // 得到 session 对象
         HttpSession session = req.getSession();
@@ -27,13 +27,14 @@ public class ShowCart extends HttpServlet {
         // 获取购物车数据
         List<Book> books = (List<Book>)session.getAttribute("cart");
         if (books == null) {
-            writer.write("你还什么都没买呢");
-//            resp.sendRedirect(req.getContextPath() + "/showBooks");
-            resp.setHeader("refresh", "2;url=" + req.getContextPath() + "/showBooks");
+            writer.write("你还什么都没买呢！2 秒后回到主页");
+//            resp.sendRedirect(req.getContextPath() + "/showAllBooks");
+            resp.setHeader("refresh", "2;url=" + req.getContextPath() + "/showAllBooks");
             return;
         }
         for (Book book : books) {
             writer.write(book.getName() + "<br>");
         }
+        writer.write("<hr><a href='" + req.getContextPath() + "/showAllBooks'>回到主页</a>");
     }
 }

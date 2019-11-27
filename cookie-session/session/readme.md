@@ -13,3 +13,13 @@ cookie 中的 jsessionid<br>
 与 [firstSession](src/main/java/org/lzn/FirstSession.java) 配合研究，多个浏览器是否能访问同一个 session<br>
 1. 不同浏览器访问的 session 不同
 2. 浏览器关闭则 session 清除，则关闭浏览器标签则不会清除
+## [showAllBooks](src/main/java/org/lzn/cart/ShowAllBooksServlet.java)
+使用 session 实现购物车功能
+### 架构
+| 类名 | 说明 | package |
+| :- | :- | :- |
+| [Book](src/main/java/org/lzn/entity/Book.java) | 实体类 | entity |
+| [DBUtil](src/main/java/org/lzn/util/DBUtil.java) | 工具类，模拟从数据库获取数据 | util |
+| [ShowAllBooksServlet](src/main/java/org/lzn/cart/ShowAllBooksServlet.java) | Servlet，主页 | cart |
+| [ShowCart](src/main/java/org/lzn/cart/ShowCart.java) | Servlet，显示购物车 | cart |
+| [AddCart](src/main/java/org/lzn/cart/AddCart.java) | Servlet，添加到购物车 | cart |
