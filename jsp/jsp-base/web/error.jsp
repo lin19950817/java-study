@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;UTF-8" pageEncoding="UTF-8" %>
 <!--
 
   发生错误时显示这个页面
@@ -9,6 +9,10 @@
     <title>Title</title>
   </head>
   <body>
+  <%-- 暴露异常类 --%>
+  <%@ page isErrorPage="true" %>
+  <%=exception.getMessage() %>
+
     服务器繁忙！
   </body>
 </html>

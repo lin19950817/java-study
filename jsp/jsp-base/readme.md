@@ -69,8 +69,57 @@
    ```
    <%@ page errorPage="relative_url" %>
    ```
-10. isErrorPage
+10. [isErrorPage](web/error.jsp)
    ```
    // 默认值为 false
    <%@ page isErrorPage="true | false" %>
    ```
+11. contentType
+    ```
+       <%@ page contentType="mimeType [ ;charset=characterSet ] | text/html;charset=UTF-8" %>
+       // 例如
+       <%@ page contentType="text/html;charset=UTF-8" %>
+       // 等同于
+       response.setContentType("text/html;charset=UTF-8");
+    ```
+12. pageEncoding
+    ```
+       // 服务器使用什么编码转译文件
+       <%@ page pageEncoding="UTF-8" %>
+    ```
+13. isisELIgnored
+    ```
+       // 忽视 EL 表达式，默认值 true
+       <%@ page isisELIgnored="true | false" %>
+    ```
+### include
+把其他资源包含到当前页面中
+1. [first.jsp](web/include/first.jsp)
+2. [second.jsp](web/include/second.jsp)
+#### 静态包含（推荐）
+```
+<%@ include file="/include/header.jsp" %>
+```
+#### 动态包含
+```
+<jsp:include file="/include/header.jsp"></jsp>
+```
+#### 两者区别
+翻译的时间段不同
+##### 静态包含
+在翻译是就把两个文件合并
+##### 动态包含
+不会合并文件，当代码执行到 include 时，才包含另一个文件的内容
+### taglib
+在 jsp 页面中导入 JSTL 标签库。替换 jsp 中的 java 代码片段
+```
+// prefix 是别名，需要 jar： jstl
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+```
+## 6 个动作
+1. `<jsp:include>` 动态包含
+2. `<jsp:forward>` 请求转发
+3. `<jsp:param>` 设置请求参数
+4. `<jsp:userBean>` 创建一个对象
+5. `<jsp:setProperty>` 给指定的对象属性赋值
+6. `<jsp:getProperty>` 取出指定对象的属性值

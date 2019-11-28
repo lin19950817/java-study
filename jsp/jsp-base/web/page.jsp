@@ -1,4 +1,3 @@
-<!--
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%-- 导入包 --%>
@@ -11,6 +10,11 @@
   // session.setAttribute("aaa", "asdf");
 %>
 
+<%-- 忽略 EL 表达式 --%>
+<%@ page isELIgnored="true" %>
+${ 2 }
+
+<!--
 
 3 个指令
 
@@ -24,10 +28,6 @@
     // 报错
     int e = 10 / 0;
   %>
-
-  <%-- 暴露异常类 --%>
-  <%@ page isErrorPage="true" %>
-  <%=exception.getMessage() %>
 
   </body>
 </html>
