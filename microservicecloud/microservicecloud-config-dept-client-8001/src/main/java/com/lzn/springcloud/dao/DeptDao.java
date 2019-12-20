@@ -1,0 +1,1 @@
+package com.lzn.springcloud.dao;import com.lzn.springcloud.entities.Dept;import org.apache.ibatis.annotations.Mapper;import java.util.List;/** *  * * @param null * @author LinZhenNan 2019-08-02 8:43 * @return  */@Mapperpublic interface DeptDao {    public boolean addDept(Dept dept);    public Dept findById(Long id);    public List<Dept> findAll();}
