@@ -8,16 +8,16 @@
 2. 网页注释： `<%-- 网页注释 --%>` 特点： 不安全，费流量
 ## jsp 的 3 个指令
 > JSP指令（directive）是为JSP引擎而设计的，它们并不直接产生任何可见输出，而只是告诉引擎如何处理JSP页面中的其余部分。
-1. page 指令
+1. <a href="#page">page 指令</a>
 2. include 指令
-3. taglib 指令
+3. <a href="#taglib">taglib 指令</a>
 ### 语法
 ```
 <%@ 指令名称 属性1=“属性值1”属性值2=“属性值2”。。。 %>
 // 例如
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 ```
-### [page](web/page.jsp)
+### <a name="page" style="text-decoration:none">[page](web/page.jsp)</a>
 用于定义 jsp 页面的各种属性
 1. import 和 java 代码中的 import 是一样的
     ```
@@ -110,7 +110,7 @@
 在翻译是就把两个文件合并
 ##### 动态包含
 不会合并文件，当代码执行到 include 时，才包含另一个文件的内容
-### taglib
+### <a name="taglib" style="text-decoration:none">taglib</a>
 在 jsp 页面中导入 JSTL 标签库。替换 jsp 中的 java 代码片段
 ```
 // prefix 是别名，需要 jar： jstl
