@@ -1,0 +1,1 @@
+spring:  cloud:    config:      name: microservicecloud-config-dept-client      # 选择使用那个 config      # profile: dev      profile: test      label: hehe      uri: http://config-3344.com:3344
