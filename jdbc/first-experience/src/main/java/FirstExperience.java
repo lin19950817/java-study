@@ -34,7 +34,7 @@ public class FirstExperience {
        String sqlConnect = "jdbc:mysql://localhost:3306/java_web?useUnicode=true&characterEncoding=utf-8&useSSL=false";
 
        // 获取连接 Connection
-       Connection connection = DriverManager.getConnection(sqlConnect, "root", "hehe");
+       Connection connection = DriverManager.getConnection(sqlConnect, "root", "root");
 
        // 后去执行 sql语句的对象 statement
        Statement statement = connection.createStatement();
@@ -76,7 +76,7 @@ public class FirstExperience {
        String sqlConnect = "jdbc:mysql://localhost:3306/java_web?useUnicode=true&characterEncoding=utf-8&useSSL=false";
        Properties info = new Properties();
        info.setProperty("user", "root");
-       info.setProperty("password", "hehe");
+       info.setProperty("password", "root");
        Connection connection = DriverManager.getConnection(sqlConnect, info);
        Statement statement = connection.createStatement();
        String sql = "select * from user_demo";
@@ -102,7 +102,7 @@ public class FirstExperience {
     */
    public void third() throws Exception {
        Class.forName("com.mysql.jdbc.Driver");
-       String sqlConnect = "jdbc:mysql://localhost:3306/java_web?user=root&password=hehe";
+       String sqlConnect = "jdbc:mysql://localhost:3306/java_web?user=root&password=root";
        Connection connection = DriverManager.getConnection(sqlConnect);
        Statement statement = connection.createStatement();
        String sql = "select * from user_demo";

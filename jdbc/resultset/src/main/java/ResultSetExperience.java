@@ -22,7 +22,7 @@ public class ResultSetExperience {
      * @return void
      */
     public void getObject() throws Exception{
-        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=hehe&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=root&useUnicode=true&characterEncoding=utf-8&useSSL=false";
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(sqlConnect);
         Statement statement = connection.createStatement();
@@ -53,7 +53,7 @@ public class ResultSetExperience {
      * @return void
      */
     public void returnEntity() throws Exception{
-        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=hehe&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=root&useUnicode=true&characterEncoding=utf-8&useSSL=false";
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(sqlConnect);
         Statement statement = connection.createStatement();
@@ -89,7 +89,7 @@ public class ResultSetExperience {
      */
     public void moveCursor() throws Exception{
 
-        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=hehe&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=root&useUnicode=true&characterEncoding=utf-8&useSSL=false";
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(sqlConnect);
         Statement statement = connection.createStatement();

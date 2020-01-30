@@ -17,7 +17,7 @@ public class Crud {
 
     public void insert() throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
-        String sqlConnect = "jdbc:mysql://localhost:3306/java_web?user=root&password=hehe&useUnicode=true&characterEncoding=utf-8&useSSL=true";
+        String sqlConnect = "jdbc:mysql://localhost:3306/java_web?user=root&password=root&useUnicode=true&characterEncoding=utf-8&useSSL=true";
         Connection connection = DriverManager.getConnection(sqlConnect);
         Statement statement = connection.createStatement();
 
@@ -37,7 +37,7 @@ public class Crud {
 
 
     public void update() throws Exception{
-        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=hehe&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=root&useUnicode=true&characterEncoding=utf-8&useSSL=false";
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(sqlConnect);
         Statement statement = connection.createStatement();
@@ -54,7 +54,7 @@ public class Crud {
 
     public void delete() throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
-        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=hehe&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+        String sqlConnect = "jdbc:mysql:///java_web?user=root&password=root&useUnicode=true&characterEncoding=utf-8&useSSL=false";
         Connection connection = DriverManager.getConnection(sqlConnect);
         Statement statement = connection.createStatement();
 
