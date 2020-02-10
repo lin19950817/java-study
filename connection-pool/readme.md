@@ -21,7 +21,7 @@
 
 1. 拷贝数据库连接 `mysql-connector-java` 的 `jar` 到 `tomcat/lib` 目录下。
 
-   ![mysqlConnect](images\mysqlConnectorJava.jpg)
+   ![mysqlConnect](images/mysqlConnectorJava.jpg)
 
 2. 配置数据源
 
