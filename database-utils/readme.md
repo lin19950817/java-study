@@ -35,5 +35,5 @@
 ## 学习
 
 1. [DBUtils 学习](DbUtils-quick-start)
-2. [转账（案例）]()
+2. [转账（案例）](transfer)
 
