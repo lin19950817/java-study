@@ -1,5 +1,6 @@
 # session
 > Session是 **服务器端** 技术，利用这个技术，服务器在运行时可以为每一个用户的浏览器创建一个 **独享的HttpSession对象**，由于session为用户浏览器独享，所以用户在访问服务器的web资源时，可以把各自的数据放在各自的session中，当用户再去访问服务器中的其它web资源时，其它web资源再从用户各自的session中取出数据为用户服务。
+
 `session` 存放对象时，对象需要实现 `Serializable`，停止 `tomcat` 后，对象会被保存在本地。
 
 `idea` 配置 `tomcat` 的 `session` 对象存放路径：`C:\Users\用户名\.IntelliJIdea2019.1\system\tomcat\项目名\work\Catalina\localhost\listener`
@@ -9,6 +10,7 @@ session 的实现原理<br>
 ![session](images/session.png)<br>
 cookie 中的 jsessionid<br>
 ![jsessionid](images/jsessionid.png)
+
 ### getSession: 内部执行原理
 1. 获取名称为 jsessionid 的 cookie 的值
 2. 没有这样的 cookie，创建一个新的 HttpSession 对象，分配一个唯一的 sessionID，并且向客户端卸了一个名为 jsessionid=sessionId 的 cookie
