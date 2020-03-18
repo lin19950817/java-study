@@ -1,0 +1,5 @@
+<Context>
+    <Manager className="org.lzn.domain.Role" maxIdleSwap="1">
+        <Store className="org.lzn.domain.Role" directory="lznRole"/>
+    </Manager>
+</Context>
