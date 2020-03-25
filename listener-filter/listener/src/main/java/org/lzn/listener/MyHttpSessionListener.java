@@ -9,10 +9,12 @@ import javax.servlet.http.HttpSessionListener;
  * @author LinZhenNan lin_hehe@qq.com 2020/03/04 23:23
  */
 public class MyHttpSessionListener implements HttpSessionListener {
+    @Override
     public void sessionCreated(HttpSessionEvent se) {
         System.out.println("HttpSession 对象创建了");
     }
 
+    @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         System.out.println("HttpSession 对象销毁了");
     }

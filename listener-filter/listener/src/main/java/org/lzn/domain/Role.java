@@ -14,10 +14,12 @@ public class Role implements Serializable, HttpSessionActivationListener {
     private String name;
     private String position;
 
+    @Override
     public void sessionWillPassivate(HttpSessionEvent se) {
         System.out.println("钝化");
     }
 
+    @Override
     public void sessionDidActivate(HttpSessionEvent se) {
         System.out.println("活化");
     }

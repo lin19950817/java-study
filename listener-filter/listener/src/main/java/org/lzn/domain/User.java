@@ -14,10 +14,12 @@ public class User implements HttpSessionBindingListener {
     private String name;
     private int age;
 
+    @Override
     public void valueBound(HttpSessionBindingEvent event) {
         System.out.println("user 对象被绑定了");
     }
 
+    @Override
     public void valueUnbound(HttpSessionBindingEvent event) {
         System.out.println("user 对象解除绑定");
     }

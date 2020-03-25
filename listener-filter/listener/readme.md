@@ -64,7 +64,7 @@
     
     当下一次在启动服务器，因为我们已经将对象写入到文件中，这时就会自动将 `javaBean` 对象活化到`session` 中。
     
-    我们还需要个 [context.xml](web/meta-inf/context.xml) 文件来配置钝化时存储的文件。
+    我们还需要个 [context.xml](web/META-INF/context.xml) 文件来配置钝化时存储的文件。
 
 ## 监听器快速入门
 

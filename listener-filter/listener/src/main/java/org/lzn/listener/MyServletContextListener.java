@@ -9,10 +9,12 @@ import javax.servlet.ServletContextListener;
  * @author LinZhenNan lin_hehe@qq.com 2020/03/04 0:54
  */
 public class MyServletContextListener implements ServletContextListener {
+    @Override
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("ServletContext 对象创建了");
     }
 
+    @Override
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("ServletContext 对象销毁了");
     }
