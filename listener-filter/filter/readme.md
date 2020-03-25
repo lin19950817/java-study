@@ -77,3 +77,7 @@
 3. 创建 `servlet` 执行转发的 [SenderServlet.java](src/main/java/org/lzn/servlet/SenderServlet.java)
 4. 创建 `serlvet` 接收转发的 [RecipientServlet.java](src/main/java/org/lzn/servlet/RecipientServlet.java)
 5. [首页](web/welcome.jsp) 观察过滤器行为
+
+## 案例
+
+* [自动登录](../auto-login)
