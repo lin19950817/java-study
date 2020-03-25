@@ -2,7 +2,7 @@
 
 `Javaweb` 中的过滤器可以拦截所有访问 `web` 资源的请求或响应操作。
 
-![filter](..\images\filter\filter.png)
+![filter](../images/filter/filter.png)
 
 ## 目录
 
@@ -49,7 +49,7 @@
 
 * 获取 `ServletContext` 对象
 
-  ![filterConifgMethod](..\images\filter\filterConifgMethod.png)
+  ![filterConifgMethod](../images/filter/filterConifgMethod.png)
 
 怎样在Filter中获取一个 `FIlterConfig` 对象？
 
