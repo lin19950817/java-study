@@ -144,6 +144,8 @@
 | out         | javax.servlet.jsp.JspWriter            | 字符输出流，相当于 `printWriter` 对象 |
 | pageContext | javax.servlet.jsp.PageContext          |                                       |
 
+![build-in Object](../images/jspBuild-inObject.png)
+
 ## 四大域对象
 
 1. <a href="#pageContext">pageContext</a> : 存放的数据在当前页面有效。
