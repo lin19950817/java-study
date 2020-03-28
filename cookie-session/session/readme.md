@@ -37,3 +37,14 @@ cookie 中的 jsessionid<br>
 | [ShowAllBooksServlet](src/main/java/org/lzn/cart/ShowAllBooksServlet.java) | Servlet，主页 | cart |
 | [ShowCart](src/main/java/org/lzn/cart/ShowCart.java) | Servlet，显示购物车 | cart |
 | [AddCart](src/main/java/org/lzn/cart/AddCart.java) | Servlet，添加到购物车 | cart |
+
+## sessionid 什么时候生成
+
+* 直接访问 `html` 文件，不会返回给浏览器 `jsessionid`
+
+* 访问 `servlet` 也不会返回浏览器 `jsessionid`。当调用 `HttpServletRequest` 的 `getSession()`，例如 `req.getSession()`，则返回浏览器 `jessionid`。
+
+* 访问 `jsp`，则返回浏览器 `jsessionid`。原因是 `jsp` 会创建内置对象。
+
+  [jsp github学习连接](https://github.com/lin19950817/java-study/tree/master/jsp/jsp-base)
+
