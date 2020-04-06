@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--修改 structs 中的 default.properties 定义的常量值-->
+    <!--开启开发模式-->
+    <constant name="struts.devMode" value="true" />
+    <!--修改 struts 中默认的后缀名-->
+    <constant name="struts.action.extension" value="abc" />
+
+    <!--
+        package 元素：是定一个 struts 的包，他是把配置文件按照面向对象的思想来管理。分模块开发。
+            name 属性：指定包的名称。注意：报名处在配置文件中唯一。
+            extends 属性：指定当前包的父包。它是按照面向对象的思想管理的体现。
+            abstract 属性：把包声明为一个抽象包。抽象宝就是用来被继承的。只是没有 action 元素的包，才能被定义为抽象包。
+            namespace 属性：名称空间。当指定了名称空间之后，访问路径就变成了：访问路径 = 名称空间 + 动作名称。当不指定该属性时，该属性有默认值，默认值是""。注意，不是"/"。
+    -->
+    <package name="p1" extends="struts-default">
+        <!--修改默认动作类（一般不改）-->
+        <default-class-ref class="base.org.lzn.web.action.Demo3Action" />
+
+        <!--
+            action 元素：是定义动作名称，动作类和动作方法的映射。以及当出现不同情况时前往指定的结果视图
+                name 属性：动作的名称。和 jsp 页面上的请求 url 中的名称对应起来。注意在此处不能写 .action
+                class 属性：指定动作类
+                method 属性：指定要执行的动作方法
+        -->
+        <action name="hello" class="base.org.lzn.web.action.HelloAction" method="sayHello">
+            <!--
+                result 元素：配置逻辑结果视图
+                    name 属性：结果视图名称。与动作方法的返回值对应，当一致时前往指定的 jsp
+                    type 属性：结果视图类型。默认值为 dispatcher 转发
+                        常用值：
+                            dispatcher：请求转发，默认值
+                            redirect：重定向
+                            chain：转发到另一个动作
+                                转发到同包（同名称空间）下的另一个动作
+                                转发到不同包（不同名称空间）下的另一个动作
+                            redirectAction：重定向到另一个动作
+                                重定向到同包（同名称空间）下的另一动作
+                                重定向到不同包（不同名称空间）下的另一个动作
+            -->
+            <result name="success">/success.jsp</result>
+        </action>
+
+        <!--转发向到同包（同名称空间）下的另一个动作-->
+        <action name="chain1" class="base.org.lzn.web.action.HelloAction" method="sayBye">
+            <result name="bye" type="chain">hello</result>
+        </action>
+
+        <!--重定向到同包（同名称空间）下的另一个动作-->
+        <action name="redirectAction1" class="base.org.lzn.web.action.HelloAction" method="sayBye">
+            <result name="bye" type="redirectAction">hello</result>
+        </action>
+
+        <!--转发向到不同包（不同名称空间）下的另一个动作-->
+        <action name="chain2" class="base.org.lzn.web.action.HelloAction" method="sayBye">
+            <result name="bye" type="chain">
+                <param name="namespace">p2</param>
+                <param name="actionName">hello</param>
+            </result>
+        </action>
+
+        <!--重定向到不同包（不同名称空间）下的另一个动作-->
+        <action name="redirectAction2" class="base.org.lzn.web.action.HelloAction" method="sayBye">
+            <result name="bye" type="redirectAction">
+                <param name="namespace">p2</param>
+                <param name="actionName">hello</param>
+            </result>
+        </action>
+
+        <!--
+            默认的动作类和动作方法的配置
+            默认的动作类是：ActionSupport 的类。他是在 struts-default.xml 的配置文件中定义着。
+        -->
+        <action name="defaultAction">
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+    <package name="p2" extends="struts-default" namespace="/p2">
+        <action name="hello" class="base.org.lzn.web.action.HelloAction" method="sayHello">
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+</struts>
