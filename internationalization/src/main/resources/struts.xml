@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <!--配置 struts2 的默认信息资源包-->
+    <constant name="struts.custom.i18n.resources" value="message"/>
+
+    <package name="p1" extends="struts-default">
+        <!--全局资源包的国际化信息-->
+        <action name="action1" class="org.lzn.struts.DemoAction">
+            <result>/struts2/success.jsp</result>
+        </action>
+        <!--包级资源包的国际化信息-->
+        <action name="action2" class="org.lzn.struts.struts2package.Demo2Action">
+            <result>/struts2/success.jsp</result>
+        </action>
+        <!--动作类级资源包的国际化信息-->
+        <action name="action3" class="org.lzn.struts.struts2package.action.Demo3Action">
+            <result>/struts2/success.jsp</result>
+        </action>
+    </package>
+</struts>
