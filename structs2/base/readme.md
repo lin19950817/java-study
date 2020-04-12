@@ -261,8 +261,3 @@ namespace 指定为 /p2，请求 /p2/xx/hello.action 也能请求到资源。
       }
   }
   ```
-
-  
-
-  
-

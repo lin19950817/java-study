@@ -11,6 +11,8 @@
     <modules>
         <module>quick-start</module>
         <module>base</module>
+        <module>base2</module>
+        <module>base3</module>
     </modules>
 
 
