@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+
+    <!--OGNL 开启调用静态方法-->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+
+    <!--配置上传文件的大小(5M)。-->
+    <constant name="struts.multipart.maxSize" value="524480"/>
+    
+    <package name="p1" extends="struts-default">
+        <!--声明自定义拦截器-->
+        <interceptors>
+            <interceptor name="demo1Interceptor" class="org.lzn.interceptor.Demo1Interceptor"/>
+            <interceptor name="demo1MethodInterceptor" class="org.lzn.interceptor.Demo1MethodInterceptor"/>
+            <!--自定义默认拦截器-->
+            <interceptor-stack name="myDefaultStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="demo1MethodInterceptor"/>
+                <interceptor-ref name="demo1Interceptor"/>
+            </interceptor-stack>
+        </interceptors>
+        <!--将默认拦截栈覆盖称自己的默认拦截栈-->
+        <default-interceptor-ref name="myDefaultStack"/>
+        <action name="action1" class="org.lzn.action.Demo1Action" method="save">
+            <!--
+                使用自定义拦截器，当配置了任何一个拦截器，默认的拦截器栈就不会再工作了
+                    当有多个拦截器的时候，是否引用配置决定执行的顺序。注意：执行顺序与声明顺序无关
+                    若是自定义了more拦截器栈，则不用声明拦截器
+            -->
+<!--            <interceptor-ref name="demo1Interceptor"/>-->
+
+            <!--不被拦截方法拦截器拦截-->
+            <interceptor-ref name="myDefaultStack">
+                <param name="demo1MethodInterceptor.excludeMethods">save</param>
+            </interceptor-ref>
+            <result name="success">/demo1.jsp</result>
+        </action>
+        <action name="action2" class="org.lzn.action.Demo1Action" method="update">
+            <result name="success">/demo1.jsp</result>
+        </action>
+    </package>
+    
+    <package name="p2" extends="struts-default">
+        <action name="upload1" class="org.lzn.action.Upload1Action" method="upload">
+            <interceptor-ref name="defaultStack">
+                <!--限制上传文件的扩展名。如果有多个，使用逗号分隔-->
+<!--                <param name="fileUpload.allowedExtensions">jpg,png,bmp</param>-->
+                <!--限制上传文件的文件类型。如果有多个，使用逗号分隔-->
+                <param name="fileUpload.allowedTypes">image/jpg,image/pjpeg,image/png</param>
+            </interceptor-ref>
+            <result name="input">/upload1.jsp</result>
+        </action>
+
+        <action name="upload2" class="org.lzn.action.Upload2Action" method="upload">
+            <result name="input">/upload2.jsp</result>
+        </action>
+
+        <action name="download" class="org.lzn.action.DownloadAction" method="download">
+            <result name="success" type="stream">
+                <!--给 sream 的结果类型注入参数：content-type-->
+                <param name="contentType">application/octet-stream</param>
+                <!--告知客户浏览器以下载的方式打开-->
+                <param name="contentDisposition">attachment;filename=hehe.jpg</param>
+                <!--注入字节输入流：取值要写动作类中的名称-->
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+
+        <action name="download2" class="org.lzn.action.Download2Action" method="download">
+            <result name="success" type="stream">
+                <!--给 sream 的结果类型注入参数：content-type-->
+                <param name="contentType">application/octet-stream</param>
+                <!--告知客户浏览器以下载的方式打开，使用 OGNL 表达式，来动态获取文件名-->
+                <param name="contentDisposition">attachment;filename=${@java.net.URLEncoder@encode(filename, "UTF-8")}</param>
+                <!--注入字节输入流：取值要写动作类中的名称-->
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+    </package>
+</struts>
