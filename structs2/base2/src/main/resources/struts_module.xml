@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="p1" extends="struts-default">
+        <action name="action1" class="base2.org.lzn.web.action.Demo1Action" method="addUser">
+            <!--
+                静态参数封装
+                使用注入的方式，给动作类中的参数赋值
+                当我们不懈任何拦截器时，默认的拦截器栈 defaultStack 它来为我们工作。
+                但是，只要写了任何一个拦截器，默认的就全部不起作用。
+            -->
+            <param name="username">张三</param>
+            <param name="age">18</param>
+        </action>
+        <!--动态参数封装，第一种形式配置-->
+        <action name="action2" class="base2.org.lzn.web.action.Demo2Action" method="addUser"></action>
+        <!--动态参数封装，第二种形式配置-->
+        <action name="action3" class="base2.org.lzn.web.action.Demo3Action" method="addUser"></action>
+        <!--动态参数封装，第三种形式配置-->
+        <action name="action4" class="base2.org.lzn.web.action.Demo4Action" method="addUser"></action>
+
+        <!--类型转换器-->
+        <action name="action5" class="base2.org.lzn.web.action.Demo4Action" method="addUser">
+            <!--当出现问题之后，需要从哪来回哪去-->
+            <result name="input">/addUser5.jsp</result>
+        </action>
+
+        <!--编程式验证-->
+        <action name="action6" class="base2.org.lzn.web.action.Demo5Action" method="addUser">
+            <!--当出现问题之后，需要从哪来回哪去-->
+            <result name="input">/addUser6.jsp</result>
+        </action>
+        <!--编程式验证-->
+        <action name="action7" class="base2.org.lzn.web.action.Demo5Action" method="addUserNotValid">
+            <!--当出现问题之后，需要从哪来回哪去-->
+            <result name="input">/addUser7.jsp</result>
+        </action>
+        <action name="action8" class="base2.org.lzn.web.action.Demo6Action" method="addUser">
+            <!--当出现问题之后，需要从哪来回哪去-->
+            <result name="input">/addUser8.jsp</result>
+        </action>
+        <action name="action9" class="base2.org.lzn.web.action.Demo7Action" method="addUser">
+            <!--当出现问题之后，需要从哪来回哪去-->
+            <result name="input">/addUser9.jsp</result>
+        </action>
+        <action name="action10" class="base2.org.lzn.web.action.Demo8Action" method="addUser">
+            <!--当出现问题之后，需要从哪来回哪去-->
+            <result name="input">/addUser10.jsp</result>
+        </action>
+    </package>
+</struts>
