@@ -271,6 +271,12 @@ EL 表达式：expression language 表达式语言
 | initParam           | java.util.Map<String,Object>  | 没有对应的       | web.xml中全局参数                                            |
 | cookie              | java.util.Map<String,Object>  | 没有对应的       | key:cookie对象的name值                                       |
 
+### EL 表达式自定义方法
+
+1. 编写一个普通类 [MyFunction.java](src/main/java/org/lzn/el/MyFunction.java)，提供一个实现功能的静态方法。
+2. 在 `WEB-INF` 目录中创建一个扩展名 `.tld` 的 `xml` 文件 [myfunction.tld](web/WEB-INF/myfunction.tld)，文件不能放在 `classes` 和 `lib` 目录中。
+3. 在 `jsp` 页面 [myel.jsp](web/el/myel.jsp) 中使用 `taglib` 指令引入外部的标签库或方法库。
+
 ## JSTL
 
 `JSTL(JavaServerPages Standard Tag Library)` `JSTL` 标准标签库。使用 `JSTL` 实现 `JSP` 页面中逻辑处理。如判断、循环等。

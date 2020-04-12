@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+    <!-- 指定标签库或方法库版本号 -->
+    <tlib-version>1.0</tlib-version>
+    <!-- 使用的短名称。对应的是taglib指令中的prefix -->
+    <short-name>myfn</short-name>
+    <!-- uri:把当前的方法库绑定到一个uri地址上，在该网址上不一定存在方法库 -->
+    <uri>http://www.lzn.org/functions/myfunction</uri>
+    <!-- 自定义方法 -->
+    <function>
+        <!-- 方法的名称，是jsp页面上使用的名称 -->
+        <name>toUpperCase</name>
+        <!-- 指定执行的类 -->
+        <function-class>org.lzn.el.MyFunction</function-class>
+        <!--
+            指定执行的方法。方法名称必须和类中的方法名称保持一致
+            注意：当方法有参数和返回值时：参数和返回值必须写类全名（除了基本数据类型）
+        -->
+        <function-signature>java.lang.String toUpperCase( java.lang.String )</function-signature>
+    </function>
+</taglib>
