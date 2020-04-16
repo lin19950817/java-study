@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    
+    <package name="p1" extends="struts-default">
+        <action name="action1" class="org.lzn.action.Demo1Action">
+            <result>/demo1.jsp</result>
+        </action>
+
+        <action name="action2" class="org.lzn.action.Demo2Action" method="operate">
+            <result>/demo2.jsp</result>
+        </action>
+
+        <action name="action3" class="org.lzn.action.Demo3Action">
+            <result>/demo3.jsp</result>
+        </action>
+    </package>
+
+    <package name="p2" extends="struts-default">
+        <action name="token1" class="org.lzn.action.Token1Action" method="login">
+            <!--由于默认的拦截器栈中没有令牌的拦截器，所以需要把默认的拦截器栈配上-->
+            <interceptor-ref name="defaultStack" />
+            <!--使用 struts2 提供的一个令牌的拦截器：token-->
+            <interceptor-ref name="token" />
+            <result type="redirect">/success.jsp</result>
+            <result name="invalid.token">/message.jsp</result>
+        </action>
+
+        <action name="token2" class="org.lzn.action.Token2Action" method="login">
+            <!--由于默认的拦截器栈中没有 tokenSession 的拦截器，所以需要把默认的拦截器栈配上-->
+            <interceptor-ref name="defaultStack" />
+            <!--使用 struts2 提供一个 tokenSession 的拦截器：token-->
+            <interceptor-ref name="tokenSession" />
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+</struts>
