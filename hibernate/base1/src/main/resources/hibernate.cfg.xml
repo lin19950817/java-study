@@ -10,7 +10,7 @@
         <!--hibernate.connection.username: 连接数据库的用户名-->
         <property name="hibernate.connection.username">root</property>
         <!--hibernate.connection.password: 连接数据库的密码-->
-        <property name="hibernate.connection.password">hehe</property>
+        <property name="hibernate.connection.password">root</property>
         <!--hibernate.connection.url: 连接数据库的地址，路径-->
         <property name="hibernate.connection.url">jdbc:mysql:///study_hibernate</property>
 
@@ -20,7 +20,7 @@
         <property name="format_sql">true</property>
         <!--hibernate.hbm2ddl.auto: 是否自动生成表结构-->
         <property name="hibernate.hbm2ddl.auto">update</property>
-            <!--hibernate.connection.autocommit-->
+        <!--hibernate.connection.autocommit-->
         <property name="hibernate.connection.autocommit">true</property>
         <!--current session context configured-->
         <property name="current_session_context_class">thread</property>
