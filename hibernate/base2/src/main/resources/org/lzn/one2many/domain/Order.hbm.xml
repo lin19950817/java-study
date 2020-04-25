@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.lzn.one2many.domain">
+    <class name="Order" table="t_order">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+
+        <!--
+            表达多对一关系
+                name: 引用的属性名称
+                column: 外键的列名
+                class: 引用的 Order 的全类名（此处在 hibernate-mapping 标签中设置了 package 属性，因此不用全类名）
+        -->
+        <many-to-one name="customer" column="cid" class="Customer"/>
+    </class>
+</hibernate-mapping>

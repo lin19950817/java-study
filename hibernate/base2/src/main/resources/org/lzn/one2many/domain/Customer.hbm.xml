@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.lzn.one2many.domain">
+    <class name="Customer" table="t_customer">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+
+        <!--
+            表达一对多关系
+                name: 集合的属性名称
+                inverse: 是否将关系维护反转给对方。默认值是 false
+                cascade: 级联操作。如果需要配置多项，使用逗号分隔。<set cascade="save-update, delete">
+                    save-update: A 保存，同时保存 B
+                    delete: 删除 A，同时删除 B，AB 都不存在
+                    delete-orphan: 孤儿删除，解除关系，同时将 B 删除，A 存在
+                    all: save-update 和 delete 整合
+                    all-delete-orphan: 三个整合
+        -->
+        <set name="orders" inverse="true" cascade="save-update">
+            <!--key: 用来描述外键，column: 外键的值-->
+            <key column="cid"/>
+            <one-to-many class="Order"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--
+        class: 配置实体与表的关系
+            name: 填写实体的完整类名
+            table: 与实体对应表的名称
+    -->
+    <class name="org.lzn.domain.User" table="t_user">
+        <!--
+            id: 配置实体与表中 id 的映射
+                name: user 对象中标志主键的属性名称
+                column: 主键在表中的列名
+        -->
+        <id name="uid" column="id">
+            <!--
+                generator: 主键生成策略
+                    native: 有数据库来维护主键(数据库中的配置 主键自增)
+            -->
+            <generator class="native"/>
+        </id>
+        <!--
+            property: 实体中属性与表中列的映射
+                name: 实体中属性名称
+                column: 表中列的名称
+        -->
+        <property name="username" column="username"/>
+        <property name="password" column="password"/>
+    </class>
+</hibernate-mapping>
