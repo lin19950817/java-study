@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.lzn.many2many.domain">
+    <class name="Student" table="t_student">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+
+        <!--
+            多对多关系
+                set: 表达集合
+                    name: 集合的属性名
+                    table: 多对多中间表的表名
+                key: 表达外键
+                    column: 引用我的外建明
+                many-to-many: 表达多对多
+                    class: 集合引用的类型
+                    column: 对方在中间表的外建名
+        -->
+        <set name="courses" table="t_student_course" inverse="true" cascade="save-update" fetch="select" lazy="false">
+            <key column="s_id"/>
+            <many-to-many class="Course" column="c_id"/>
+        </set>
+        
+        <!--局部配置-->
+        <query name="localHql"><![CDATA[from Course ]]></query>
+    </class>
+    <!--全局配置-->
+    <query name="globalHql"><![CDATA[from Student ]]></query>
+</hibernate-mapping>

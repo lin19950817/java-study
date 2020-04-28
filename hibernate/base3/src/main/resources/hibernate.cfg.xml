@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--property 元素用于配置 Hibernate 中的属性-->
+        <!--hibernate.connection.driver_class: 连接数据的驱动-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--hibernate.connection.username: 连接数据库的用户名-->
+        <property name="hibernate.connection.username">root</property>
+        <!--hibernate.connection.password: 连接数据库的密码-->
+        <property name="hibernate.connection.password">root</property>
+        <!--hibernate.connection.url: 连接数据库的地址，路径-->
+        <property name="hibernate.connection.url">jdbc:mysql:///study_hibernate?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</property>
+
+        <!--show_sql: 操作数据库时，回想控制台打印 sql 语句-->
+        <property name="show_sql">true</property>
+        <!--format_sql: 打印 sql 语句前，会将 sql 语句先格式化-->
+        <property name="format_sql">true</property>
+        <!--hibernate.hbm2ddl.auto: 是否自动生成表结构-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--hibernate.connection.autocommit-->
+        <property name="hibernate.connection.autocommit">true</property>
+        <!--current session context configured-->
+        <property name="current_session_context_class">thread</property>
+
+        <!--告诉 Hibernate，我要使用 C3P0-->
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <!-- c3p0 连接池相关配置
+        <property name="hibernate.c3p0.max_size">5</property>
+        <property name="hibernate.c3p0.min_size">2</property>
+        <property name="hibernate.c3p0.timeout">5000</property>
+        <property name="hibernate.c3p0.max_statements">100</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        -->
+
+        <!--
+            改变 Hibernate 事务隔离级别
+                1: 读未提交
+                2: 读已提交
+                4: 不可重复读
+                8: 序列化
+        -->
+        <property name="hibernate.connection.isolation">2</property>
+
+        <!--引入 ORM 映射文件，与 bean 相同路径-->
+        <mapping resource="org/lzn/many2many/domain/Student.hbm.xml"/>
+        <mapping resource="org/lzn/many2many/domain/Course.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
