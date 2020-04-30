@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.lzn.one2one.domain">
+    <class name="Company" table="t_company">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+
+        <!--
+            配置 一对一
+                one-to-one: 默认是使用主键同步策略完成一对一的表关系
+                property-ref（使用外键维护一对一关系时）: 指定 company 在一对一关联时，指向那个属性
+        -->
+        <one-to-one name="address" class="Address"/>
+    </class>
+</hibernate-mapping>

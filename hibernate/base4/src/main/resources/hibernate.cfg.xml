@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--property 元素用于配置 Hibernate 中的属性-->
+        <!--hibernate.connection.driver_class: 连接数据的驱动-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--hibernate.connection.username: 连接数据库的用户名-->
+        <property name="hibernate.connection.username">root</property>
+        <!--hibernate.connection.password: 连接数据库的密码-->
+        <property name="hibernate.connection.password">root</property>
+        <!--hibernate.connection.url: 连接数据库的地址，路径-->
+        <property name="hibernate.connection.url">jdbc:mysql:///study_hibernate?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</property>
+
+        <!--show_sql: 操作数据库时，回想控制台打印 sql 语句-->
+        <property name="show_sql">true</property>
+        <!--format_sql: 打印 sql 语句前，会将 sql 语句先格式化-->
+        <property name="format_sql">true</property>
+        <!--hibernate.hbm2ddl.auto: 是否自动生成表结构-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--hibernate.connection.autocommit-->
+        <property name="hibernate.connection.autocommit">true</property>
+        <!--current session context configured-->
+        <property name="current_session_context_class">thread</property>
+
+        <!--告诉 Hibernate，我要使用 C3P0-->
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+
+        <!--配置使用二级缓存-->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <!--配置二级缓存的实现类 EhCache，Hibernate4 之后版本-->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        
+        <!--开启查询缓存-->
+        <property name="hibernate.cache.user_query_cache">true</property>
+
+        <mapping resource="org/lzn/one2one/domain/Company.hbm.xml"/>
+        <mapping resource="org/lzn/one2one/domain/Address.hbm.xml"/>
+        <mapping resource="org/lzn/secondcache/domain/Customer.hbm.xml"/>
+        <mapping resource="org/lzn/secondcache/domain/Order.hbm.xml"/>
+
+        <!--mapping 后面配置缓存区-->
+        <!--配置缓存区，类缓存-->
+        <class-cache class="org.lzn.secondcache.domain.Customer" usage="read-only"/>
+        <class-cache class="org.lzn.secondcache.domain.Order" usage="read-only"/>
+        <!--
+            配置缓存区，集合缓存
+                collection: 完整类名.集合属性名
+        -->
+        <collection-cache collection="org.lzn.secondcache.domain.Customer.orders" usage="read-only"/>
+    </session-factory>
+</hibernate-configuration>
