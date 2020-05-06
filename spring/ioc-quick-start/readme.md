@@ -72,7 +72,7 @@ public class Ioc {
 
 接口 [UserService.java](src/main/java/org/lzn/service/UserService.java)
 
-控制反转的目标类 [UserServiceImpl.java](src/main/java/org/lzn/impl/UserServiceImpl.java)
+控制反转的目标类 [UserServiceImpl.java](src/main/java/org/lzn/service/impl/UserServiceImpl.java)
 
 spring 配置文件 [bean.xml](src/main/resources/bean.xml)
 
