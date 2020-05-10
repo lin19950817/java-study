@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--组件扫描，扫描含有注解的类-->
+    <context:component-scan base-package="org.lzn.xml.annotation"/>
+
+    <!--创建 service-->
+    <bean id="userService" class="org.lzn.service.impl.UserServiceImpl"/>
+
+    <!--
+        静态工厂创建实例
+            class: 确定静态工厂全限定类名
+            factory-method: 确定静态方法名
+    -->
+    <bean id="staticFactory" class="org.lzn.static_factory.MyBeanFactory" factory-method="createUserService"/>
+
+    <!--创建工厂实例-->
+    <bean id="factory" class="org.lzn.factory.MyFactory"/>
+    <!--
+        通过工厂实例获得 userService
+            factory-bean: 确定工厂实例
+            factory-method: 确定普通方法
+    -->
+    <bean id="userServiceByFactory" factory-bean="factory" factory-method="createUserService"/>
+
+    <!--单例 bean，默认值-->
+    <bean id="single" class="org.lzn.scope.impl.SingleBeanScopeImpl"/>
+    <!--多例 bean-->
+    <bean id="prototype" class="org.lzn.scope.impl.PrototypeBeanScopeImpl" scope="prototype"/>
+
+    <!--
+        生命周期
+            init-method：用于配置初始化方法
+            destroy-method：用于；配置销毁方法
+    -->
+    <bean id="lifecycle" class="org.lzn.lifecycle.impl.BeanLifecycleImpl" init-method="myInit"
+          destroy-method="myDestroy"/>
+
+    <!--BeanPostProcessor 实现类注册给 spring-->
+    <bean class="org.lzn.post_processor.MyBeanPostProcessor"/>
+
+    <!--
+        属性注入，构造方法
+        constructor-arg：用于配置构造方法一个参数 argument
+            name：参数的名称
+            value：设置普通数据
+                例如：
+                    <constructor-arg name="username" value="hehe"/>
+                    <constructor-arg name="age" value="18"/>
+            ref：引用数据，一般是另一个 beanId 的值
+            index：参数的索引号，从 0 开始。如果只有索引，默认使用第一个构造方法
+                例如：
+                    <constructor-arg index="0" value="1"/>
+                    <constructor-arg index="1" value="2"/>
+            type：确定参数类型 和 index 一起使用
+                例如：
+                    <constructor-arg index="0" type="java.lang.Integer" value="1"/>
+                    <constructor-arg index="1" type="java.lang.String" value="2"/>
+    -->
+    <bean id="user" class="org.lzn.xml.construct.User">
+        <!--<constructor-arg name="username" value="hehe"/>
+        <constructor-arg name="age" value="18"/>-->
+        <constructor-arg index="0" type="java.lang.Integer" value="1"/>
+        <constructor-arg index="1" type="java.lang.String" value="2"/>
+    </bean>
+
+    <!--
+        setter 属性注入
+            普通数据
+                <property name="name" value="hehe"/>
+                等同
+                <property name="name">
+                    <value>hehe</value>
+                </property>
+            引用类型
+                <property name="companyAddress" ref="companyAddress"/>
+                等同
+                <property name="companyAddress">
+                    <ref bean="companyAddress"/>
+                </property>
+
+    -->
+    <bean id="person" class="org.lzn.xml.property.Person">
+        <!--普通类型-->
+        <property name="name" value="hehe"/>
+        <property name="age">
+            <value>18</value>
+        </property>
+
+        <!--应用类型-->
+        <property name="companyAddress" ref="companyAddress"/>
+        <property name="homeAddress">
+            <ref bean="homeAddress"/>
+        </property>
+    </bean>
+    <bean id="homeAddress" class="org.lzn.xml.property.Address">
+        <property name="detailAddress" value="北上广深123"/>
+        <property name="telephone" value="119"/>
+    </bean>
+    <bean id="companyAddress" class="org.lzn.xml.property.Address">
+        <property name="detailAddress" value="北上广深abc"/>
+        <property name="telephone" value="120"/>
+    </bean>
+
+    <!--p 命名空间-->
+    <bean id="p_person" class="org.lzn.xml.property.Person"
+          p:name="p 命名空间" p:age="18"
+          p:homeAddress-ref="homeAddress" p:companyAddress-ref="companyAddress"/>
+
+    <!--
+        集合注入：给 <property> 添加子标签
+            数组：<array>
+            List：<list>
+            Set：<set>
+            Map：<map>
+            Properties：<props>，底层是 Map<String, String>
+        普通数据：<value>
+        引用数据：<ref>
+    -->
+    <bean id="collectionData" class="org.lzn.xml.collection.CollectionData">
+        <property name="arrayData">
+            <array>
+                <value>array1</value>
+                <value>array2</value>
+                <value>array3</value>
+            </array>
+        </property>
+
+        <property name="listData">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+
+        <property name="setData">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+                <value>set3</value>
+            </set>
+        </property>
+
+        <property name="mapData">
+            <map>
+                <entry key="key1" value="value1"/>
+                <entry>
+                    <key>
+                        <value>key2</value>
+                    </key>
+                    <value>value2</value>
+                </entry>
+            </map>
+        </property>
+
+        <property name="propertiesData">
+            <props>
+                <prop key="propsKey1">propsValue1</prop>
+                <prop key="propsKey2">propsValue2</prop>
+                <prop key="propsKey3">propsValue3</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
