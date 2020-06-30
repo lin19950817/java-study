@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx
+       					   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/context
+       					   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        1. 加载 hibernate.cfg.xml 获得 SessionFactory
+            configLocation：确定配置文件位置
+    -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="configLocation" value="classpath:org/lzn/hibernate/cfg/hibernate.cfg.xml"/>
+    </bean>
+
+    <!--
+        2. 创建模板
+            底层使用 session，session 有 sessionFactory 获得
+    -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--3. dao-->
+    <bean id="userDao" class="org.lzn.hibernate.cfg.dao.impl.UserDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <!--4. service-->
+    <bean id="userService" class="org.lzn.hibernate.cfg.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <!--5. 事务管理-->
+    <!--5.1 事务管理：HibernateTransactionManager-->
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!--5.2 事务详情，给方法进行具体事务设置-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="save"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--5.3 AOP 编程，筛选切入点方法-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* org.lzn.hibernate.cfg.service..*.*(..))"/>
+    </aop:config>
+</beans>
