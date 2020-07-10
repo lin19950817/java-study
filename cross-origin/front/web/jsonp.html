@@ -1,0 +1,14 @@
+<head>
+    <meta charset="UTF-8">
+    <title>JSONP</title>
+	<script type="text/javascript">
+		function showData(data) {
+			alert(data.success);
+		}
+	</script>
+    <script type="text/javascript" src="http://localhost:8080/back/jsonpServlet?callback=showData"></script>
+</head>
+<body>
+    <h1>jsonp</h1>
+</body>
+</html>

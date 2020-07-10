@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+  CORS 普通跨域请求
+  @author LinZhenNan lin_hehe@qq.com 2020/07/08
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORS 普通跨域请求</title>
+    <script type="text/javascript">
+        /**
+         * 获取 XMLHttpRequest 对象
+         *
+         * @returns {XMLHttpRequest}
+         */
+        function getXMLHttpRequest() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+
+        /**
+         * 发送 POST 请求
+         *
+         * @param url   请求路径
+         * @param data  数据
+         */
+        function sendPost(url, data) {
+            // 获取 XMLHttpRequest 对象
+            var xmlhttp = getXMLHttpRequest();
+            // 处理响应结果
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        console.log("responseHeaders : " + xmlhttp.getAllResponseHeaders());
+                        alert("responseText : " + xmlhttp.responseText);
+                    }
+                }
+            }
+            // 建立一个连接
+            xmlhttp.open("POST", url);
+            // 设置头信息
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // 发送请求
+            xmlhttp.send(data);
+        }
+        function btn() {
+            var form = document.getElementById("form");
+            var inputs = form.getElementsByTagName("input");
+            var prms = "";
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type === "text") {
+                    prms += "&" + inputs[i].name + "=" + inputs[i].value;
+                }
+            }
+            prms = prms.substr(1);
+            console.log(prms);
+            var url = "http://localhost:8080/back/corsCommonServlet";
+            sendPost(url, prms);
+            alert("hehe");
+        }
+    </script>
+</head>
+<body>
+    <h1>CORS 普通跨域请求</h1>
+    <form id="form">
+        名称：<input type="text" name="name"/><br>
+        爱好：<input type="text" name="hobby"/><br>
+        <input type="button" value="发送请求" onclick="btn()" />
+    </form>
+</body>
+</html>
