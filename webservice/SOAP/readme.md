@@ -214,7 +214,7 @@ public class Client {
 }
 ```
 
-### <a name="program" style="text-decoration:none">结果</a>
+### <a name="result" style="text-decoration:none">结果</a>
 
 ![soap1.2](../images/SOAP/tunnellijSOAP1.2.png)
 
