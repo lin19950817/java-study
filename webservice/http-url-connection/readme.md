@@ -1,6 +1,6 @@
 # HttpURLConnection 调用方式
 
-使用 HttpURLConnection 调用方式，调用 [SOAP 接口](SOAP/readme.md#program)。设置的调用参数可查看 [此处](SOAP/readme.md#result)
+使用 HttpURLConnection 调用方式，调用 [SOAP 接口](../SOAP/readme.md#program)。设置的调用参数可查看 [此处](../SOAP/readme.md#result)
 
 ## 步骤
 
