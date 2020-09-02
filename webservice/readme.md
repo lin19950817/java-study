@@ -64,4 +64,3 @@ Wsimport常用的参数：
 
 [使用例子](http-url-connection/readme.md)
 
-### Ajax 调用方式
