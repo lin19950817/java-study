@@ -175,3 +175,24 @@ public class Client {
 }
 ```
 
+## 用注解修改 WSDL 内容
+
+通过注解，可以更加形像的描述 Web 服务。对自动生成的 wsdl 文档进行修改，为使用者提供一个更加清晰的 wsdl 文档。
+
+当修改了 WebService 注解之后，会影响客户端生成的代码。调用的方法名和参数名也发生了变化
+
+### 注解
+
+* @WebService：定义服务，在类上面
+  * targetNamespace：指定命名空间
+  * name：portType 的名称
+  * portName：port 的名称
+  * serviceName：服务名称
+  * endpointInterface：SEI 接口地址，如果一个服务类实现了多个接口，只需要发布一个接口的方法，可通过此注解指定要发布服务的接口。
+* @WebMethod：定义方法，在公开方法上边
+  * operationName：方法名
+  * exclude：设置为 true 表示此方法不是 webservice 方法，反之则表示 webservice 方法，默认是 false
+* @WebResult：定义返回值，在方法返回值前边
+  * name：返回结果值的名称
+* @WebParam：定义参数，在方法参数前边
+  * name：指定参数的名称
