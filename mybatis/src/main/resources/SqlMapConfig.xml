@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--属性-->
+    <properties resource="db.properties" />
+    <!--全局参数-->
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        
+        <!--开启延迟加载，默认是 true-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+        <!--设置积极的赖加载，默认是 true-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        
+        <!--二级缓存的总开关-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <!--定义别名-->
+    <typeAliases>
+        <!--单个别名-->
+        <typeAlias type="org.lzn.po.User" alias="user" />
+        
+        <!--批量定义别名，name：指定包名，别名为类名（首字母大小写都可以）-->
+        <package name="org.lzn.po"/>
+        <package name="org.lzn.dto"/>
+    </typeAliases>
+    <!-- 配置mybatis的环境信息 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置JDBC事务控制，由mybatis进行管理 -->
+            <transactionManager type="JDBC" />
+            <!-- 配置数据源，采用dbcp连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 加载 mapper -->
+    <mappers>
+        <mapper resource="User.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="advance/AdvanceMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lzn.advance.AdvanceMapper">
+
+    <!--开启二级缓存，默认使用 PerpetualCache-->
+    <cache />
+
+    <!--动态 sql 片段，可以让代码有更高的可重用性，需要先定义后使用-->
+    <sql id="companyFields">
+        c.id companyId,
+        c.`name` companyName
+    </sql>
+
+    <!--查询公司与地址信息，使用 resultType 来进行一对一结果映射-->
+    <select id="getCompanyByResultType" parameterType="Long" resultType="CompanyDTO">
+        SELECT
+            c.id,
+            c.`name` companyName,
+            a.`name` addressName
+        FROM
+            t_company c
+        JOIN t_address a ON a.id = c.id
+        WHERE
+            c.id = #{id}
+    </select>
+
+    <!--查询公司与地址信息，使用 resultMap 来进行一对一结果映射-->
+    <resultMap id="companyDTOResultMap" type="CompanyDTO">
+        <!--公司信息-->
+        <id column="companyId" property="id"/>
+        <result column="companyName" property="companyName"/>
+
+        <!--地址信息，一对一关系-->
+        <association property="address" javaType="Address">
+            <id column="addressId" property="id"/>
+            <result column="addressName" property="name"/>
+        </association>
+    </resultMap>
+    <select id="getCompanyByResultMap" resultMap="companyDTOResultMap">
+        SELECT
+            a.id addressId,
+            a.`name` addressName,
+            -- 引入 sql 片段
+            <include refid="companyFields"/>
+        FROM
+            t_company c
+        JOIN t_address a ON a.id = c.id
+        WHERE
+            c.id = #{id}
+    </select>
+
+    <!--通过id查询客户及订单信息，一对多-->
+    <resultMap id="customerResultMap" type="CustomerDTO">
+        <id column="customerId" property="customerId"/>
+        <result column="customerName" property="customerName"/>
+
+        <collection property="orders" ofType="Order">
+            <id column="orderId" property="id"/>
+            <result column="orderName" property="name"/>
+        </collection>
+    </resultMap>
+    <select id="getCustomer" resultMap="customerResultMap">
+        SELECT
+            c.id customerId,
+            c.`name` customerName,
+            o.id orderId,
+            o.`name` orderName
+        FROM
+            t_customer c
+        JOIN t_order o ON o.cid = c.id
+        WHERE
+            c.id = #{id}
+    </select>
+    
+    <resultMap id="customerLazyLoad" type="CustomerDTO">
+        <id column="id" property="customerId"/>
+        <result column="name" property="customerName"/>
+
+        <!--延迟加载-->
+        <!--
+            select：指定关联查询的查询 statementId，然后将查询结果，封装到 property 属性指定的变量中
+            column：通过 column 指定的列所查询出的结果，作为 select 指的 statement 的入参
+            注意：如果 select 指定的 statementId，参数有多个，需要在 column 中 {col1=prop1,col2=prop2}
+        -->
+        <collection property="orders" ofType="Order" select="org.lzn.advance.AdvanceMapper.getOrderLazyLoad" column="id">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
+    <select id="getCustomerLazyLoad" resultMap="customerLazyLoad" parameterType="Long">
+        SELECT
+            id,
+            `name`
+        FROM
+            t_customer
+        WHERE
+            id = #{id}
+    </select>
+    <select id="getOrderLazyLoad" resultType="Order" parameterType="Long">
+        SELECT
+            id,
+            `name`
+        FROM
+            t_order
+        WHERE
+            cid = #{id}
+    </select>
+</mapper>

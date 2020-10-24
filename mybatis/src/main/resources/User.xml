@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quickstart">
+    <!--根据用户 id，查询用户信息-->
+    <!--
+        [id]：statement 的 id，要求在命名空间内唯一
+        [parameterType]：入参的 java 类型
+        [resultType]：查询出的单条结果集对应的 java 类型
+        [#{}]：表示一个占位符
+        [#{id}]：表示该占位符待接收参数的名称为 id。如果参数为简单类型时，#{}里面的参数名称可以是任意定义
+    -->
+    <select id="findUserById" parameterType="int" resultType="org.lzn.po.User">
+        select * from t_user where id = #{id}
+    </select>
+
+    <!--根据用户名称模糊查询用户信息列表-->
+    <!--
+        [${}]：表示拼接 SQL 字符串
+        [${value}]：表示要拼接的是简单类型参数
+        注意：
+            1. 如果参数为简单类型时，${} 里面的参数名称必须为 value
+            2. ${} 会引起 SQL 注入，一般情况下不推荐使用。但是有些场景必须使用${}，比如order by ${colname}
+    -->
+    <select id="findUserByUsername" parameterType="String" resultType="org.lzn.po.User">
+        select * from t_user where username like '%${value}%'
+    </select>
+
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="org.lzn.po.User">
+        insert into t_user (username, `password`) values(#{username}, #{password})
+    </insert>
+
+    <!--主键返回-->
+    <!--MySql selectKey 方式-->
+    <!--
+        [selectKey 标签]：通过 select 查询来生成主键
+        [keyProperty]：指定存放生成主键的属性
+        [resultType]：生成主键所对应的 java 类型
+        [order]：指定该查询主键 Sql 语句的执行顺序，相对于 insert 语句，自增主键则使用 AFTER。
+        [LAST_INSERT_ID()]：mysql 的函数，要配合 insert 语句一起使用
+    -->
+    <insert id="insertUserOfSelectKeyMySql" parameterType="org.lzn.po.User">
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into t_user (username, `password`) values(#{username}, #{password})
+    </insert>
+    <!--MySql uuid 方式-->
+    <!--
+        [UUID()]：mysql 的函数，生成的主键是 35 位的字符串，所以使用它时要修改 id 的类型为字符类型
+        注意：
+            1. 此时 order 采用 BEFORE
+            2. 显示的给 ID 赋值
+    -->
+    <insert id="insertUserOfUuidMySql" parameterType="org.lzn.po.User">
+        <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+            select UUID()
+        </selectKey>
+        insert into t_user (id, username, `password`) values(#{id}, #{username}, #{password})
+    </insert>
+    <!--oracle sequence 方式-->
+    <!--
+        通过 oracle 的 sequence 获取主键方式与 MySql 的 uuid 方式基本一致
+    -->
+    <insert id="insertUserOfSequenceOracle" parameterType="org.lzn.po.User">
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="BEFORE">
+            select user_seq.nextval() from dual
+        </selectKey>
+        insert into t_user (id, username, `password`) values(#{id}, #{username}, #{password})
+    </insert>
+
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        delete from t_user where id = #{id}
+    </delete>
+    
+    <!--修改用户信息-->
+    <update id="updateUser" parameterType="org.lzn.po.User">
+        update t_user set username = #{username}, password = #{password} where id = #{id}
+    </update>
+</mapper>
